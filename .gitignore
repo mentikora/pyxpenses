@@ -1,0 +1,5 @@
+*
+
+!.gitignore
+!/sqlite_personal_tracker/
+!/sqlite_personal_tracker/*
