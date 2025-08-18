@@ -2,7 +2,7 @@ from expense.expenses_repository import ExpensesRepository
 from expense.expense import Expense
 from db import Database
 
-db = Database('expenses.py')
+db = Database('expenses.db')
 repository = ExpensesRepository(db)
 
 for x in range(10):
