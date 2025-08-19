@@ -1,6 +1,68 @@
-*
+# Python-specific
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv
+env/
+venv/
+ENV/
+*.egg-info/
+*.egg
+dist/
+build/
+pip-log.txt
 
-!.gitignore
-!/sqlite_personal_tracker/
-!/sqlite_personal_tracker/*
-!/sqlite_personal_tracker/*/*
+# Node.js-specific
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+.pnpm-debug.log
+
+# Tailwind CSS and PostCSS build files
+/app/static/css/main.css
+/app/static/css/main.css.map
+
+# Virtual environment files
+.Python
+pyvenv.cfg
+.idea/
+.vscode/
+
+# Byte-compiled, cached files
+*.swp
+*.swo
+*.swn
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment variables (if stored locally)
+app/.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Editor directories and files
+*.sublime-workspace
+*.sublime-project
+*.vscode/
+*.idea/
+
+# Backup files
+*.bak
+*.orig
+*.tmp
+
+# DB file
+*.sqlite3
+
+# rest projects
+/rest/
