@@ -30,10 +30,12 @@ class Database:
                 rank=rank,
             )
             
+            print(f"Article {article} successfuly added")
             return article
         
         except IntegrityError:
             print(f'[DB] Article with URL {url} already exists')
             return None
-        else:
-            print(f"Article {article} successfuly added")
+    
+    def count(self):
+        return Article.select().count()
