@@ -1,0 +1,16 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+package-lock.json
+
+# Build output
+dist/
+build/
+.vite/
+.next/
+
+# Tailwind CSS / PostCSS build files
+/app/static/css/main.css
+/app/static/css/main.css.map

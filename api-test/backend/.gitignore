@@ -1,0 +1,33 @@
+# Python-specific
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+*.env
+*.venv
+env/
+venv/
+ENV/
+.Python
+pyvenv.cfg
+
+# Packaging / Build
+*.egg-info/
+*.egg
+dist/
+build/
+pip-log.txt
+
+# Byte-compiled swap files
+*.swp
+*.swo
+*.swn
+
+# Python test cache
+.mypy_cache/
+.pytest_cache/
+
+# SQLite DB files
+*.sqlite3
