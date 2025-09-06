@@ -1,0 +1,75 @@
+from abc import ABC, abstractmethod
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Optional
+from logger import logger
+
+class DirectoryNotFound(Exception):
+    """Raised when directory is missing"""
+    pass
+
+@dataclass
+class ABCFolderSetup(ABC):
+    dir: Optional[Path] = None
+    
+    def __post_init__(self):
+        if isinstance(self.dir, str):
+            self.dir = Path(self.dir)
+    
+    @abstractmethod
+    def _check_directory() -> None:
+        raise NotImplementedError
+
+
+@dataclass
+class OutputFolderSetup(ABCFolderSetup):
+    def __post_init__(self):
+        super().__post_init__()
+        self._check_directory()
+        logger.info('Output folder is setupped')
+        
+    def _check_directory(self) -> None:
+        if not self.dir.exists():
+            self.dir.mkdir(parents=True, exist_ok=True)
+    
+    def cleanup(self) -> None:
+        for file in self.dir.iterdir():
+            if file.is_file():
+                file.unlink()
+        logger.info("Cleanup output folder...")
+
+
+@dataclass
+class InputFolderSetup(ABCFolderSetup):
+    allowed_extensions: Optional[set[str]] = None
+    
+    def __post_init__(self):
+        super().__post_init__()
+        self._check_directory()
+        self._check_files_and_extensions()
+        logger.info('Input folder is setupped')
+
+    def _check_directory(self) -> None:
+        if not self.dir.is_dir():
+            raise DirectoryNotFound(f'Required directory is missing: {self.dir}')
+
+    def _check_files_and_extensions(self) -> None:
+        files = list(self.dir.iterdir())
+        
+        if not files:
+            raise FileNotFoundError('Input folder is empty')
+
+        for file in files:
+            if file.is_file() and file.suffix.lower() not in self.allowed_extensions:
+                raise ValueError(f"Found file with disallowed extensions: {file}")
+
+    @property
+    def files(self) -> list[any]:
+        files = []
+        
+        for file in self.dir.iterdir():
+            if file.is_file() and file.suffix.lower() in self.allowed_extensions:
+                files.append(file)
+
+        return files
+
