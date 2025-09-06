@@ -27,4 +27,3 @@ class ImageProcessor():
             )
 
             logger.info(f"Processed: {file.name} -> {output_path.name}")
-            

@@ -1,5 +1,4 @@
 from pathlib import Path
-from PIL import Image
 from file import InputFolderSetup, OutputFolderSetup, DirectoryNotFound
 from processes import ImageProcessor
 from logger import logger
@@ -10,15 +9,20 @@ def main():
             dir=Path('./input'),
             allowed_extensions={'.jpg', '.png'}
         )
-        output_folder = OutputFolderSetup(
-            dir=Path('./output')
-        )
     except (
         DirectoryNotFound,
-        FileNotFoundError,
         ValueError,
     ) as error:
         logger.error(error)
+        raise
+    
+    try:
+        output_folder = OutputFolderSetup(
+            dir=Path('./output')
+        )
+    except (DirectoryNotFound) as error:
+        logger.error(error)
+        raise
 
     output_folder.cleanup()
     processor = ImageProcessor(

@@ -45,8 +45,11 @@ class InputFolderSetup(ABCFolderSetup):
     
     def __post_init__(self):
         super().__post_init__()
+        
         self._check_directory()
         self._check_files_and_extensions()
+        self._get_files()
+        
         logger.info('Input folder is setupped')
 
     def _check_directory(self) -> None:
@@ -56,20 +59,20 @@ class InputFolderSetup(ABCFolderSetup):
     def _check_files_and_extensions(self) -> None:
         files = list(self.dir.iterdir())
         
-        if not files:
-            raise FileNotFoundError('Input folder is empty')
-
         for file in files:
             if file.is_file() and file.suffix.lower() not in self.allowed_extensions:
                 raise ValueError(f"Found file with disallowed extensions: {file}")
 
-    @property
-    def files(self) -> list[any]:
+    def _get_files(self) -> None:
         files = []
         
         for file in self.dir.iterdir():
             if file.is_file() and file.suffix.lower() in self.allowed_extensions:
                 files.append(file)
 
-        return files
+        self._files = files
+    
+    @property
+    def files(self) -> list[any]:
+        return self._files
 
