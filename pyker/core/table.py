@@ -1,6 +1,6 @@
 import uuid
-from player import Player
-from deck import Deck
+from .player import Player
+from .deck import Deck
 
 
 class Table:
@@ -21,5 +21,16 @@ class Table:
     def reset(self):
         pass
 
-    def give_cards(self):
-        pass
+    def give_cards(self, amount: int = 2):
+        for player in self.players:
+            for _ in range(amount):
+                card = self.deck.draw()
+                player.receive_card(card)
+
+    def _debugger_info(self):
+        print("==========")
+        print("Deck:")
+        print(self.deck.deck)
+        print("Players:")
+        for player in self.players:
+            print(player)
