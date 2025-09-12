@@ -1,4 +1,4 @@
-from player import Player
+from .player import Player
 
 
 class Dealer(Player):
@@ -7,5 +7,5 @@ class Dealer(Player):
     represents the dealer
     """
 
-    def __init__(self):
-        super().__self__()
+    def __init__(self, name: str = "Blackjack Dealer"):
+        super().__init__(name=name)

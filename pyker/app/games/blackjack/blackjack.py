@@ -10,7 +10,7 @@ class BlackjackTable(Table):
 
     def __init__(self):
         super().__init__()
-        self.dealer = Dealer("Blackjack Dealer")
+        self.dealer = Dealer()
 
         for _ in range(2):
             self._dealer_take_card()
@@ -72,3 +72,9 @@ class BlackjackTable(Table):
         Summarize cards total value
         """
         return sum(self._card_to_value(card) for card in cards)
+
+    def _debugger_info(self):
+        super()._debugger_info()
+        print("==========")
+        print("Dealer:")
+        print(self.dealer)
