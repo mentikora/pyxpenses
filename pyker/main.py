@@ -16,7 +16,7 @@ def main():
     # table.add_player(him)
     table.give_cards()
 
-    print(me.id)
+    print(me.id, table.id)
     # cards_value = summarize_hand(
     #     [card_value(card) for card in chain.from_iterable(me.cards)]
     # )

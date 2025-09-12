@@ -3,6 +3,10 @@ from dataclasses import dataclass
 
 
 class Rank(Enum):
+    """
+    Card rank with value
+    """
+
     TWO = 2
     THREE = 3
     FOUR = 4
@@ -19,6 +23,10 @@ class Rank(Enum):
 
 
 class Suit(Enum):
+    """
+    Card suit with symbol
+    """
+
     SPADES = "♠"
     HEARTS = "♥"
     DIAMONDS = "♦"
@@ -27,6 +35,10 @@ class Suit(Enum):
 
 @dataclass(frozen=True)
 class Card:
+    """
+    Represents a playing card
+    """
+
     rank: Rank
     suit: Suit
 

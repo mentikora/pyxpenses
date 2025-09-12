@@ -1,12 +1,15 @@
 import uuid
+
 from .player import Player
 from .deck import Deck
+from ..utils.id import new_id
 
 
 class Table:
     def __init__(self):
         self.players: list[Player] = []
         self.deck = Deck()
+        self.id = new_id()
 
     def add_player(self, new_player: Player):
         for player in self.players:

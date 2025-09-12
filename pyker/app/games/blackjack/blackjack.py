@@ -1,12 +1,16 @@
 from ...core.card import Card, Rank
 from ...core.table import Table
-from ...core.player import Player
+from ...core.dealer import Dealer
 
 
 class BlackjackTable(Table):
+    """
+    Blackjack game table
+    """
+
     def __init__(self):
         super().__init__()
-        self.dealer = Player("Blackjack Dealer")
+        self.dealer = Dealer("Blackjack Dealer")
 
         for _ in range(2):
             self._dealer_take_card()
@@ -43,6 +47,10 @@ class BlackjackTable(Table):
                 print(f"{player.name} loses ({player_total})")
 
     def _dealer_take_card(self):
+        """
+        DRY: Dealer takes a card from the deck
+        """
+
         card = self.deck.draw()
         self.dealer.receive_card(card)
 
