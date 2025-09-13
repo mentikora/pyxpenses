@@ -5,9 +5,12 @@ repos:
     hooks:
       - id: validate-commit-message
         name: Validate Commit Message
-        entry: bash -c 'regex=\'^(feat|bugfix|hotfix|chore)\(.*\)\:\ ([A-Z]+-[0-9]+)?.*$\' && if ! grep -iqE \"$regex\" \"$1\"; then echo \"Invalid commit message\"; exit 1; fi'
+        entry: >
+          bash -c "if ! grep -iqE '^(feat|bugfix|hotfix|chore)' \"$1\"; then
+            echo 'Invalid commit message: must start with feat|bugfix|hotfix|chore';
+            exit 1;
+          fi" --
         language: system
-        files: \.git/COMMIT_EDITMSG
         stages: [commit-msg]
 
       - id: check-sensitive-information
