@@ -27,11 +27,12 @@ repos:
         language: system
         types: [python]
 
-      # - id: generate-docs
-      #   name: Generate Documentation
-      #   entry: "python scripts/generate_docs.py"
-      #   language: python
-      #   files: \.py
+      - id: generate-docs
+        name: Generate Documentation
+        entry: python pyker/scripts/generate_docs.py
+        language: python
+        pass_filenames: false
+        always_run: true
 
   - repo: https://github.com/psf/black
     rev: 22.3.0
@@ -51,8 +52,11 @@ repos:
       - id: isort
         types: [python]
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.5.1
-    hooks:
-      - id: mypy
-        types: [python]
+  # - repo: https://github.com/pre-commit/mirrors-mypy
+  #   rev: v1.5.1
+  #   hooks:
+  #     - id: mypy
+  #       args: ["--config-file=pyker/mypy.ini", "pyker"]
+  #       types: [python]
+  #       env:
+  #         MYPYPATH: pyker
