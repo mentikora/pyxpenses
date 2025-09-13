@@ -30,3 +30,7 @@ Each project typically contains:
 ```
 ./starter.sh --name=YOUR_PROJECT_NAME
 ```
+
+```
+pre-commit install
+```

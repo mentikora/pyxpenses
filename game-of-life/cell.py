@@ -1,7 +1,7 @@
-from random import randint
-from dataclasses import dataclass
 from collections.abc import Callable
+from dataclasses import dataclass
 from functools import cache
+from random import randint
 from typing import List
 
 

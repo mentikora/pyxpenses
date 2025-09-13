@@ -1,8 +1,8 @@
 import random
 from itertools import product
 
-from .card import Card, Rank, Suit
 from ..utils.id import new_id
+from .card import Card, Rank, Suit
 
 
 class Deck:

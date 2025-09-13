@@ -1,6 +1,6 @@
 from ...core.card import Card, Rank
-from ...core.table import Table
 from ...core.dealer import Dealer
+from ...core.table import Table
 
 
 class BlackjackTable(Table):

@@ -1,5 +1,5 @@
-from .card import Card
 from ..utils.id import new_id
+from .card import Card
 
 
 class Player:

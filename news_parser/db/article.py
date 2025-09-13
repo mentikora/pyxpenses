@@ -1,8 +1,10 @@
-from peewee import Model, CharField, FloatField, DateTimeField
+from peewee import CharField, DateTimeField, FloatField, Model
+
 
 class BaseModel(Model):
     class Meta:
         database = None
+
 
 class Article(BaseModel):
     title = CharField()

@@ -1,7 +1,8 @@
-from rich.console import Console
 import time
-from board import create_board, render_board, analyze_board
+
+from board import analyze_board, create_board, render_board
 from cell import cell_functions
+from rich.console import Console
 
 
 def run():

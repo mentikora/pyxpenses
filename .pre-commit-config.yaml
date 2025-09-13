@@ -1,0 +1,11 @@
+repos:
+  - repo: local
+    hooks:
+      # Root-level hook that only triggers in Pyker
+      - id: pyker
+        name: Run Pyker pre-commit
+        entry: python -m pre_commit run --config pyker/.pre-commit-config.yaml --all-files
+        language: system
+        pass_filenames: false
+        always_run: false
+        files: ^pyker/

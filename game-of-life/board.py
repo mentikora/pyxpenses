@@ -1,7 +1,8 @@
 from collections.abc import Callable
 from typing import List
-from rich import print
+
 from cell import calc_cell_state, cell_functions
+from rich import print
 
 
 def create_board(

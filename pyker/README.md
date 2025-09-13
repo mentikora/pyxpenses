@@ -7,3 +7,5 @@
 - Estimate probabilities via simulation.
 
 Could expand into a small CLI poker game with odds calculation.
+
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)

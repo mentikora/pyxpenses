@@ -1,8 +1,8 @@
 import uuid
 
-from .player import Player
-from .deck import Deck
 from ..utils.id import new_id
+from .deck import Deck
+from .player import Player
 
 
 class Table:

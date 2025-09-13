@@ -1,6 +1,6 @@
-from app.core.table import Table
 from app.core.deck import Deck
 from app.core.player import Player
+from app.core.table import Table
 
 
 def test_table_initialization():

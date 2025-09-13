@@ -1,5 +1,4 @@
 from app.core.player import Player
-
 from app.games.blackjack.blackjack import BlackjackTable
 
 

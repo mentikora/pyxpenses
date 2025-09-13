@@ -1,6 +1,7 @@
-from app.core.deck import Deck
-from app.core.card import Card, Rank, Suit
 from itertools import product
+
+from app.core.card import Card, Rank, Suit
+from app.core.deck import Deck
 
 
 def test_deck_creation() -> None:
