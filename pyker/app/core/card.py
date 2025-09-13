@@ -36,7 +36,7 @@ class Suit(Enum):
 @dataclass(frozen=True)
 class Card:
     """
-    Represents a playing card
+    Represents a general playing card
     """
 
     rank: Rank

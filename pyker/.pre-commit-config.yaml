@@ -13,7 +13,7 @@ repos:
       - id: check-sensitive-information
         name: Check for Sensitive Information
         # This will only print matches, but commits will pass if nothing sensitive is found.
-        entry: grep -iE "password|api_key|secret_key" || true
+        entry: bash -c 'grep -iE "password|api_key|secret_key" "$@" || true' --
         language: system
         types: [python]
 
