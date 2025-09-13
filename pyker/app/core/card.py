@@ -42,5 +42,12 @@ class Card:
     rank: Rank
     suit: Suit
 
-    def __str__(self):
-        return f"{self.rank.value}{self.suit.value}"
+    def repr(self) -> str:
+        """
+        Visual card representation
+        """
+        match self.rank:
+            case Rank.JACK | Rank.QUEEN | Rank.KING | Rank.ACE:
+                return f"{self.rank.name}{self.suit.value}"
+            case _:
+                return f"{self.rank.value}{self.suit.value}"

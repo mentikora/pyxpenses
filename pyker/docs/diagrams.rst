@@ -4,6 +4,8 @@ Pyker Class Diagram
 .. mermaid::
 
     classDiagram
-        Player --> Card
+        Player --> Hand
+        Player -> Wallet
         Table --> Player
+        Dealer <|-- Player
         Deck --> Card

@@ -2,7 +2,7 @@ import uuid
 
 from ..utils.id import new_id
 from .deck import Deck
-from .player import Player
+from .player.player import Player
 
 
 class Table:
@@ -27,13 +27,14 @@ class Table:
     def give_cards(self, amount: int = 2):
         for player in self.players:
             for _ in range(amount):
-                card = self.deck.draw()
-                player.receive_card(card)
+                card = self.deck.draw()[0]
+                player.hand.receive_card(card)
 
     def _debugger_info(self):
         print("==========")
         print("Deck:")
         print(self.deck.deck)
+        print("==========")
         print("Players:")
         for player in self.players:
             print(player)

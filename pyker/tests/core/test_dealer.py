@@ -1,5 +1,5 @@
 from app.core.dealer import Dealer
-from app.core.player import Player
+from app.core.player.player import Player
 
 
 def test_dealer_is_player():
@@ -23,6 +23,5 @@ def test_dealer_custom_name():
 def test_dealer_inherits_player_methods():
     dealer = Dealer()
 
-    assert hasattr(dealer, "receive_card")
-    assert hasattr(dealer, "drop_cards")
-    assert hasattr(dealer, "cards")
+    assert hasattr(dealer, "hand")
+    assert hasattr(dealer, "wallet")

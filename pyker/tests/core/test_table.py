@@ -1,5 +1,5 @@
 from app.core.deck import Deck
-from app.core.player import Player
+from app.core.player.player import Player
 from app.core.table import Table
 
 
@@ -56,8 +56,8 @@ def test_give_cards():
     initial_deck_size = len(table.deck.deck)
     table.give_cards(2)
 
-    assert len(player1.cards) == 2
-    assert len(player2.cards) == 2
+    assert len(player1.hand.cards) == 2
+    assert len(player2.hand.cards) == 2
     assert len(table.deck.deck) == initial_deck_size - 4
 
 

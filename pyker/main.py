@@ -1,5 +1,6 @@
-from app.core.player import Player
 from app.games.blackjack.blackjack import BlackjackTable
+
+from pyker.app.core.player.player import Player
 
 
 def main():
@@ -7,8 +8,9 @@ def main():
 
     blackjack = BlackjackTable()
     blackjack.add_player(me)
+    blackjack.give_cards()
 
-    # blackjack.initial_deal()
+    blackjack.initial_deal()
     blackjack._debugger_info()
 
 
