@@ -246,7 +246,9 @@ wheels = [
 name = "pyker"
 version = "0.1.0"
 source = { virtual = "." }
-dependencies = [
+
+[package.dev-dependencies]
+dev = [
     { name = "pre-commit" },
     { name = "pytest" },
     { name = "sphinx" },
@@ -255,7 +257,9 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [
+
+[package.metadata.requires-dev]
+dev = [
     { name = "pre-commit", specifier = ">=4.3.0" },
     { name = "pytest", specifier = ">=8.4.2" },
     { name = "sphinx", specifier = ">=8.2.3" },

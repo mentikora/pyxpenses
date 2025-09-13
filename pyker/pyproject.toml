@@ -1,13 +1,50 @@
 [project]
 name = "pyker"
 version = "0.1.0"
-description = "Add your description here"
+description = "Learning project"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = [
+
+[dependency-groups]
+dev = [
     "pre-commit>=4.3.0",
     "pytest>=8.4.2",
     "sphinx>=8.2.3",
     "sphinx-rtd-theme>=3.0.2",
     "sphinxcontrib-mermaid>=1.0.0",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+# Enable full set of linters
+[tool.ruff.lint]
+# Rule sets:
+# E/F = pycodestyle & pyflakes (core)
+# I   = isort (imports)
+# B   = flake8-bugbear (common bugs)
+# C4  = flake8-comprehensions
+# N   = pep8-naming
+# SIM = flake8-simplify
+# PT  = pytest-style
+# RUF = Ruff-specific rules
+# S   = flake8-bandit (security checks)
+# D   = pydocstyle (docstrings)
+select = [
+  "E", "F", "I", "B", "C4", "N", "SIM", "PT", "RUF", "S", "D"
+]
+
+# Rules to ignore (too noisy or not always useful)
+ignore = [
+  "D100", # Missing docstring in public module
+  "D104", # Missing docstring in public package
+  "D107", # Missing docstring in __init__
+]
+
+# Allow autofix for these categories
+fixable = ["ALL"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
