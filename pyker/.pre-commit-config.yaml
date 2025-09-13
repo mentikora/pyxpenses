@@ -13,6 +13,13 @@ repos:
         language: system
         stages: [commit-msg]
 
+      - id: pytest-check
+        name: Pytest-check
+        entry: pytest pyker
+        language: system
+        pass_filenames: false
+        always_run: true
+
       - id: check-sensitive-information
         name: Check for Sensitive Information
         # This will only print matches, but commits will pass if nothing sensitive is found.
