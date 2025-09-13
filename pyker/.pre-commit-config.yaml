@@ -8,12 +8,14 @@ repos:
         entry: bash -c 'regex=\'^(feat|bugfix|hotfix|chore)\(.*\)\:\ ([A-Z]+-[0-9]+)?.*$\' && if ! grep -iqE \"$regex\" \"$1\"; then echo \"Invalid commit message\"; exit 1; fi'
         language: system
         files: \.git/COMMIT_EDITMSG
+        stages: [commit-msg]
 
-      # - id: check-sensitive-information
-      #   name: Check for Sensitive Information
-      #   entry: grep -iE "password|api_key|secret_key"
-      #   language: system
-      #   files: \.py
+      - id: check-sensitive-information
+        name: Check for Sensitive Information
+        # This will only print matches, but commits will pass if nothing sensitive is found.
+        entry: grep -iE "password|api_key|secret_key" || true
+        language: system
+        types: [python]
 
       # - id: generate-docs
       #   name: Generate Documentation
@@ -21,20 +23,20 @@ repos:
       #   language: python
       #   files: \.py
 
-  # - repo: https://github.com/psf/black
-  #   rev: 22.3.0
-  #   hooks:
-  #     - id: black
-  #       types: [python]
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        types: [python]
 
-  # - repo: https://github.com/PyCQA/flake8
-  #   rev: 7.1.1
-  #   hooks:
-  #     - id: flake8
-  #       args: [--max-line-length=88]
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.1.1
+    hooks:
+      - id: flake8
+        args: [--max-line-length=88]
 
-  # - repo: https://github.com/PyCQA/isort
-  #   rev: 5.12.0
-  #   hooks:
-  #     - id: isort
-  #       types: [python]
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        types: [python]
