@@ -20,20 +20,18 @@ repos:
         pass_filenames: false
         always_run: true
 
-      - id: check-sensitive-information
-        name: Check for Sensitive Information
-        # This will only print matches, but commits will pass if nothing sensitive is found.
-        entry: >
-          bash -c 'grep -iE "password|api_key|secret_key" "$@" && { echo "Sensitive info detected"; exit 1; }' --
-        language: system
-        types: [python]
-
       - id: generate-docs
         name: Generate Documentation
         entry: python pyker/scripts/generate_docs.py
         language: python
         pass_filenames: false
         always_run: true
+
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v1.17.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.6.5
@@ -42,12 +40,25 @@ repos:
         args: [--fix]
       - id: ruff-format # formatter
 
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.379
+    hooks:
+      - id: pyright
+        additional_dependencies:
+          [
+            beartype,
+            einops,
+            jax,
+            jaxtyping,
+            optax,
+            pytest,
+            typing_extensions,
+            wadler_lindig,
+          ]
 
-  # - repo: https://github.com/pre-commit/mirrors-mypy
-  #   rev: v1.5.1
+  # - repo: https://github.com/returntocorp/semgrep
+  #   rev: v1.92.0 # latest stable Semgrep
   #   hooks:
-  #     - id: mypy
-  #       args: ["--config-file=pyker/mypy.ini", "pyker"]
-  #       types: [python]
-  #       env:
-  #         MYPYPATH: pyker
+  #     - id: semgrep
+  #       name: Semgrep Security Audit
+  #       args: ["--config", "p/security-audit"]

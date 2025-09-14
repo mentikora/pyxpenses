@@ -48,3 +48,10 @@ fixable = ["ALL"]
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
+# Pyright
+[tool.pyright]
+include = ["app", "tests"]
+reportFunctionMemberAccess = false
+reportIncompatibleMethodOverride = true
+reportIncompatibleVariableOverride = false

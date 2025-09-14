@@ -9,3 +9,4 @@ Pyker Class Diagram
         Table "1" --> "*" Player
         Dealer --|> Player
         Deck "1" --> "*" Card
+        Deck "1" --> "1" Table
